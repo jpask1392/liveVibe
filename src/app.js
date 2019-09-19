@@ -6,37 +6,24 @@
  * @flow
  */
 
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react'
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+	SafeAreaView,
+	StyleSheet,
+	ScrollView,
+	View,
+	Text,
+	StatusBar
+} from 'react-native'
+import Login from './components/login'
 
 const App = () => {
-  return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-        </ScrollView>
-        <View>
-          <Text>Test App</Text>
-        </View>
-      </SafeAreaView>
-    </Fragment>
-  );
-};
+	return (
+		<Fragment>
+			<Login />
+		</Fragment>
+	)
+}
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: 'white'
-  },
-});
 
-export default App;
+export default App

@@ -16,29 +16,49 @@ import {
 	Alert,
 	Image
 } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Login = () => {
 	const [data, setData] = useState({})
 
 	useEffect(async () => {
-        const result = await fetch('http://localhost:3000/api/test')
-        setData(result)
-    }, [])
-    
-	console.log(data)
+		const result = await fetch('http://localhost:3000/api/test')
+		// setData(result)
+		console.log(result)
+	}, [])
+
+	// console.log(data)
+	
 	return (
 		<View style={styles.container}>
+			<View style={styles.logoContainer}>
+				<Image
+					style={{width: 94, height: 100}}
+					source={require('../../assets/logoLight.png')}
+				/>
+			</View>
 			<View style={styles.formContainer}>
-				<TextInput style={styles.textInput} />
-				<TextInput style={styles.textInput} />
+				<View style={styles.inputContainer}>
+					<View style={styles.textInput}>
+						<TextInput style={{flexGrow: 1}} placeholder="Username"/>
+						<Icon name="lock" size={30} color="#D3D3D3" />
+					</View>
+					<View style={styles.textInput}>
+						<TextInput style={{flexGrow: 1}} placeholder="Password"/>
+						<Icon name="user" size={30} color="#D3D3D3" />
+					</View>
+				</View>
+
 				<TouchableOpacity
 					style={styles.loginButton}
 					onPress={() => Alert.alert('Simple Button pressed')}>
-					<Text>Login</Text>
+					<Text style={{color:'white', alignSelf: "center"}}>Login</Text>
 				</TouchableOpacity>
 			</View>
-			<Text>Trouble signing in? Click Here</Text>
-			<Text></Text>
+
+			<View style={styles.signingInTroubleBox}>
+				<Text>Trouble signing in? Click Here</Text>
+			</View>
 		</View>
 	)
 }
@@ -50,7 +70,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	formContainer: {
-		flex: 0.3,
+		flex: 0.4,
 		backgroundColor: 'white',
 		marginRight: 10,
 		marginLeft: 10,
@@ -59,17 +79,37 @@ const styles = StyleSheet.create({
 	},
 	loginButton: {
 		backgroundColor: '#1F1F1F',
-		height: 40,
-		borderRadius: 20,
-		width: '50%'
+		height: 60,
+		borderRadius: 60,
+		width: 240,
+		top: 30,
+		justifyContent: 'center'
+		// flexGrow: 0
 	},
 	textInput: {
-		height: 40,
-		borderColor: 'gray',
+		flexDirection: 'row',
+		height: 50,
 		borderWidth: 1,
-		width: '100%',
-		marginRight: 10,
-		marginLeft: 10
+		marginTop: 20,
+		padding: 10,
+		borderColor: '#D3D3D3'
+	},
+	inputContainer: {
+		width: '90%',
+		flexGrow: 1,
+		justifyContent: 'center'
+		// backgroundColor: 'blue'
+	},
+	logoContainer: {
+		flexGrow: 0.4,
+		justifyContent: "center",
+		alignSelf: "center"
+	},
+	signingInTroubleBox: {
+		flexGrow: 0.4,
+		justifyContent: 'flex-start',
+		alignSelf: "center",
+		top: 50
 	}
 })
 

@@ -20,11 +20,11 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 const Login = props => {
 	navigationOptions = {
-		title: 'Welcome',
-	  };
+		title: 'Welcome'
+	}
 
 	const [data, setData] = useState({})
-	const {navigate} = props.navigation;
+	const { navigate } = props.navigation
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -40,7 +40,6 @@ const Login = props => {
 
 	return (
 		<View style={styles.container}>
-			{console.log(data)}
 			<View style={styles.logoContainer}>
 				<Image
 					style={{ width: 94, height: 100 }}
@@ -67,7 +66,7 @@ const Login = props => {
 
 				<TouchableOpacity
 					style={styles.loginButton}
-					onPress={() => navigate('Home', {name: 'Jamie'})}>
+					onPress={() => navigate('Dashboard', { name: 'Jamie' })}>
 					<Text style={{ color: 'white', alignSelf: 'center' }}>
 						Login
 					</Text>
@@ -92,7 +91,6 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white',
 		marginRight: 10,
 		marginLeft: 10,
-		justifyContent: 'space-around',
 		alignItems: 'center'
 	},
 	loginButton: {
@@ -102,7 +100,6 @@ const styles = StyleSheet.create({
 		width: 240,
 		top: 30,
 		justifyContent: 'center'
-		// flexGrow: 0
 	},
 	textInput: {
 		flexDirection: 'row',
@@ -116,15 +113,14 @@ const styles = StyleSheet.create({
 		width: '90%',
 		flexGrow: 1,
 		justifyContent: 'center'
-		// backgroundColor: 'blue'
 	},
 	logoContainer: {
-		flexGrow: 0.4,
+		flex: 0.4,
 		justifyContent: 'center',
 		alignSelf: 'center'
 	},
 	signingInTroubleBox: {
-		flexGrow: 0.4,
+		flex: 0.4,
 		justifyContent: 'flex-start',
 		alignSelf: 'center',
 		top: 50

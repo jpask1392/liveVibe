@@ -16,43 +16,61 @@ import {
 	Alert,
 	Image
 } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
-const Login = () => {
+const Login = props => {
+	navigationOptions = {
+		title: 'Welcome',
+	  };
+
 	const [data, setData] = useState({})
+	const {navigate} = props.navigation;
 
-	useEffect(async () => {
-		const result = await fetch('http://localhost:3000/api/test')
-		// setData(result)
-		console.log(result)
+	useEffect(() => {
+		const fetchData = async () => {
+			let res = await fetch('http://localhost:3000/api/test')
+			let resJson = await res.json()
+			return resJson
+		}
+		// when the data is collected, setState
+		fetchData().done(res => {
+			setData(res)
+		})
 	}, [])
 
-	// console.log(data)
-	
 	return (
 		<View style={styles.container}>
+			{console.log(data)}
 			<View style={styles.logoContainer}>
 				<Image
-					style={{width: 94, height: 100}}
+					style={{ width: 94, height: 100 }}
 					source={require('../../assets/logoLight.png')}
 				/>
 			</View>
 			<View style={styles.formContainer}>
 				<View style={styles.inputContainer}>
 					<View style={styles.textInput}>
-						<TextInput style={{flexGrow: 1}} placeholder="Username"/>
+						<TextInput
+							style={{ flexGrow: 1 }}
+							placeholder="Username"
+						/>
 						<Icon name="lock" size={30} color="#D3D3D3" />
 					</View>
 					<View style={styles.textInput}>
-						<TextInput style={{flexGrow: 1}} placeholder="Password"/>
+						<TextInput
+							style={{ flexGrow: 1 }}
+							placeholder="Password"
+						/>
 						<Icon name="user" size={30} color="#D3D3D3" />
 					</View>
 				</View>
 
 				<TouchableOpacity
 					style={styles.loginButton}
-					onPress={() => Alert.alert('Simple Button pressed')}>
-					<Text style={{color:'white', alignSelf: "center"}}>Login</Text>
+					onPress={() => navigate('Home', {name: 'Jamie'})}>
+					<Text style={{ color: 'white', alignSelf: 'center' }}>
+						Login
+					</Text>
 				</TouchableOpacity>
 			</View>
 
@@ -102,13 +120,13 @@ const styles = StyleSheet.create({
 	},
 	logoContainer: {
 		flexGrow: 0.4,
-		justifyContent: "center",
-		alignSelf: "center"
+		justifyContent: 'center',
+		alignSelf: 'center'
 	},
 	signingInTroubleBox: {
 		flexGrow: 0.4,
 		justifyContent: 'flex-start',
-		alignSelf: "center",
+		alignSelf: 'center',
 		top: 50
 	}
 })

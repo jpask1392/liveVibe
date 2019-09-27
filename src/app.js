@@ -6,24 +6,16 @@
  * @flow
  */
 
-import React, { Fragment } from 'react'
-import {
-	SafeAreaView,
-	StyleSheet,
-	ScrollView,
-	View,
-	Text,
-	StatusBar
-} from 'react-native'
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import Login from './components/login'
+import Home from './components/home'
 
-const App = () => {
-	return (
-		<Fragment>
-			<Login />
-		</Fragment>
-	)
-}
+const MainNavigator = createStackNavigator({
+	Login: { screen: Login },
+	Home: { screen: Home },
+})
 
+const App = createAppContainer(MainNavigator)
 
 export default App

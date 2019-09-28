@@ -6,7 +6,7 @@ import { headerStyles, featureStyles } from '../commonStyles'
 const Activity = props => {
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<Text>Activity!</Text>
 		</View>
 	)
@@ -16,5 +16,12 @@ Activity.navigationOptions = {
 	title: 'Activity',
 	...headerStyles
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: featureStyles.backgroundColor
+	}
+})
 
 export default Activity

@@ -6,7 +6,7 @@ import { headerStyles, featureStyles } from '../commonStyles'
 const Profile = props => {
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<Text>Profile!</Text>
 		</View>
 	)
@@ -16,5 +16,12 @@ Profile.navigationOptions = {
 	title: 'Profile',
 	...headerStyles
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: featureStyles.backgroundColor
+	}
+})
 
 export default Profile

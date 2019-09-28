@@ -6,7 +6,7 @@ import { headerStyles, featureStyles } from '../commonStyles'
 const CheckIn = props => {
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<Text>Check In!</Text>
 		</View>
 	)
@@ -16,5 +16,12 @@ CheckIn.navigationOptions = {
 	title: 'Check In',
 	...headerStyles
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: featureStyles.backgroundColor
+	}
+})
 
 export default CheckIn

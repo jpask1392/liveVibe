@@ -6,7 +6,7 @@ import { headerStyles, featureStyles } from '../commonStyles'
 const Events = props => {
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<Text>Events!</Text>
 		</View>
 	)
@@ -16,5 +16,12 @@ Events.navigationOptions = {
 	title: 'Events',
 	...headerStyles
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: featureStyles.backgroundColor
+	}
+})
 
 export default Events

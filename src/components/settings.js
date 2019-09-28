@@ -6,7 +6,7 @@ import { headerStyles, featureStyles } from '../commonStyles'
 const Settings = props => {
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<Text>Settings!</Text>
 		</View>
 	)
@@ -16,5 +16,12 @@ Settings.navigationOptions = {
 	title: 'Settings',
 	...headerStyles
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: featureStyles.backgroundColor
+	}
+})
 
 export default Settings

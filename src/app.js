@@ -18,8 +18,8 @@ import Activity from './components/activity'
 import Settings from './components/settings'
 
 const MainNavigator = createStackNavigator({
-	Dashboard: { screen: Dashboard },
 	Login: { screen: Login },
+	Dashboard: { screen: Dashboard },
 	CheckIn: { screen: CheckIn },
 	Profile: { screen: Profile },
 	Events: { screen: Events },

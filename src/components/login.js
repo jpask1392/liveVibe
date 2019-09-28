@@ -17,11 +17,9 @@ import {
 	Image
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { featureStyles } from '../commonStyles'
 
 const Login = props => {
-	navigationOptions = {
-		title: 'Welcome'
-	}
 
 	const [data, setData] = useState({})
 	const { navigate } = props.navigation
@@ -82,7 +80,7 @@ const Login = props => {
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: '#F5F5F5',
+		backgroundColor: featureStyles.backgroundColor,
 		flex: 1,
 		justifyContent: 'center'
 	},

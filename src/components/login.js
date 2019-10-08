@@ -24,6 +24,8 @@ const Login = props => {
 	const [data, setData] = useState({})
 	const { navigate } = props.navigation
 
+	// check the user is in the database
+	// return the data that relates to the user
 	useEffect(() => {
 		const fetchData = async () => {
 			let res = await fetch('http://localhost:3000/api/test')

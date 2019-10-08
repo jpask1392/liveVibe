@@ -1,0 +1,1 @@
+{"_id":{"$oid":"5d9d04c75a1a9db4bdc67cec"},"companyProfile":{"address":{"propertyName":"Example Company","streetName":"Example streetname","city":"Example city","country":"Example country","postcode":"Example postcode"},"bio":"Test","email":"Example@example.com"},"countData":{"previousData":[]},"companyName":"Revolution","hashedPassword":"xxxx","events":[],"__v":0}

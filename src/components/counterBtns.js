@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import { headerStyles, featureStyles } from '../commonStyles'
+import { featureStyles } from '../commonStyles'
 
 const CounterBtns = props => {
-	const buttonIconSize = 70
+	const buttonIconSize = 60
 	const [count, setCount] = useState(0)
 
 	// use redux to store count number?

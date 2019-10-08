@@ -1,61 +1,84 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { headerStyles, featureStyles } from '../commonStyles'
 import HeaderBar from './headerBar'
 
 const tempData = {
-	bioText:
-		'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem.',
-	companyName: 'Revolution',
-	email: 'Revolution@revolution.com',
-	address: {
-		streetNumber: 'Revolution',
-		streetName: 'St Mary Street',
-		city: 'Cardiff',
-		country: 'Wales',
-		postcode: 'CF53NL'
-	}
+	openTime: { hour: '22', minute: '30' },
+	closeTime: { hour: '03', minute: '00' }
 }
 
 const Profile = props => {
-	return (
-		<View style={styles.container}>
-			<HeaderBar>Profile</HeaderBar>
-			<ScrollView>
-				<View style={styles.headerBackground}></View>
-				<View style={styles.profilePicture}></View>
-				<View style={styles.textWrapper}>
-					<View>
-						<Text style={styles.sectionHeader}>Bio</Text>
-						<Text style={styles.sectionText}>
-							{tempData.bioText}
-						</Text>
+	const openTime = new Date()
+	openTime.setUTCHours(tempData.openTime.hour, tempData.openTime.minute)
+	const closeTime = new Date()
+	closeTime.setUTCHours(tempData.closeTime.hour, tempData.closeTime.minute)
+
+	const [data, setData] = useState({})
+
+	// need to confirm user is logged in 
+	useEffect(() => {
+		fetch('http://localhost:3000/api/companyProfile')
+			.then(res => res.json())
+			.then(data => setData(data))
+	}, [])
+
+	if (data.companyName === undefined) {
+		return null
+	} else {
+		return (
+			<View style={styles.container}>
+				<HeaderBar>Profile</HeaderBar>
+				<ScrollView>
+					<View style={styles.headerBackground}></View>
+					<View style={styles.profilePicture}></View>
+					<View style={styles.textWrapper}>
+						<View>
+							<Text style={styles.sectionHeader}>Bio</Text>
+							<Text style={styles.sectionText}>
+								{data.companyProfile.bio}
+							</Text>
+						</View>
+						<View>
+							<Text style={styles.sectionHeader}>
+								Company Name
+							</Text>
+							<Text style={styles.sectionText}>
+								{data.companyName}
+							</Text>
+						</View>
+						<View>
+							<Text style={styles.sectionHeader}>Email</Text>
+							<Text style={styles.sectionText}>
+							{data.companyProfile.email}
+							</Text>
+						</View>
+						<View>
+							<Text style={styles.sectionHeader}>Address</Text>
+							<Text style={styles.sectionText}>
+								{data.companyProfile.address.propertyName} {'\n'}
+								{data.companyProfile.address.streetName} {'\n'}
+								{data.companyProfile.address.city} {'\n'}
+								{data.companyProfile.address.country} {'\n'}
+								{data.companyProfile.address.postcode}
+							</Text>
+						</View>
+						<View>
+							<Text style={styles.sectionHeader}>
+								Open / Close Times
+							</Text>
+							<Text style={styles.sectionText}>
+								{`${openTime.getUTCHours()}:${openTime.getUTCMinutes()} `}
+								to
+								{` ${closeTime.getUTCHours()}:${closeTime.getUTCMinutes()}`}
+							</Text>
+						</View>
 					</View>
-					<View>
-						<Text style={styles.sectionHeader}>Company Name</Text>
-						<Text style={styles.sectionText}>
-							{tempData.companyName}
-						</Text>
-					</View>
-					<View>
-						<Text style={styles.sectionHeader}>Email</Text>
-						<Text style={styles.sectionText}>{tempData.email}</Text>
-					</View>
-					<View>
-						<Text style={styles.sectionHeader}>Address</Text>
-						<Text style={[styles.sectionText, {}]}>
-							{tempData.address.streetNumber} {'\n'}
-							{tempData.address.streetName} {'\n'}
-							{tempData.address.city} {'\n'}
-							{tempData.address.country} {'\n'}
-							{tempData.address.postcode} {'\n'}
-						</Text>
-					</View>
-				</View>
-			</ScrollView>
-		</View>
-	)
+				</ScrollView>
+			</View>
+		)
+	}
 }
 
 const profilePictureSize = 150
@@ -79,12 +102,12 @@ const styles = StyleSheet.create({
 	textWrapper: {
 		marginLeft: 15,
 		marginRight: 15,
-		marginTop: 30,
+		marginTop: 30
 	},
 	sectionHeader: {
-		fontWeight: "bold",
+		fontWeight: 'bold',
 		fontSize: 12,
-		textTransform: "uppercase",
+		textTransform: 'uppercase',
 		letterSpacing: 1.5
 	},
 	sectionText: {

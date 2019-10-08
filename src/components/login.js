@@ -64,7 +64,7 @@ const Login = props => {
 
 				<TouchableOpacity
 					style={styles.loginButton}
-					onPress={() => navigate('Dashboard', { name: 'Jamie' })}>
+					onPress={() => navigate('Profile', { name: 'Jamie' })}>
 					<Text style={{ color: 'white', alignSelf: 'center' }}>
 						Login
 					</Text>

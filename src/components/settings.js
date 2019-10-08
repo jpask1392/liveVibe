@@ -2,12 +2,13 @@ import React, { Fragment } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { headerStyles, featureStyles } from '../commonStyles'
+import HeaderBar from './headerBar'
 
 const Settings = props => {
 
 	return (
 		<View style={styles.container}>
-			<Text>Settings!</Text>
+			<HeaderBar>Settings</HeaderBar>
 		</View>
 	)
 }

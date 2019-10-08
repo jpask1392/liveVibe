@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 export const headerStyles = StyleSheet.create({
     headerStyle: {
-        backgroundColor: '#F5F5F5',
+        backgroundColor: 'white',
         height: 70,
         width: "80%",
         alignSelf: "center",
@@ -11,11 +11,11 @@ export const headerStyles = StyleSheet.create({
         fontWeight: 'bold',
         alignSelf: "flex-end",
         textAlign: "left",
-        // width: "100%",
         paddingBottom: 10
 	}
 })
 
 export const featureStyles = {
-    backgroundColor: "#F5F5F5"
+    backgroundColor: "white",
+    dark: "#1F1F1F"
 }

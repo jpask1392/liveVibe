@@ -22,6 +22,18 @@ app.route('/api/companyProfile').get((req, res) => {
 		})
 })
 
+app.route('/api/events').get((req, res) => {
+	mongoose
+		.connect('mongodb://localhost:27017/liveVibeDB', {
+			useNewUrlParser: true
+		})
+		.then(async () => {
+			// use a projection to return only event data
+			const docs = await companyModel.findOne({companyName: "Revolution"})
+			res.json(docs.events)
+		})
+})
+
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`)
 })

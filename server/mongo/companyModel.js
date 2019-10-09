@@ -14,9 +14,9 @@ const companySchema = new mongoose.Schema({
 			city: String,
 			country: String,
 			postcode: String
-        },
-        profileImage: String,
-        phoneNumber: Number,
+		},
+		profileImage: String,
+		phoneNumber: Number,
 		openTime: Date,
 		closeTime: Date
 	},
@@ -58,9 +58,8 @@ const companySchema = new mongoose.Schema({
 	events: [
 		{
 			eventName: String,
-			date: Date,
-			openTime: Date, // default to standard openTime
-			closeTime: Date, // default to standard closeTime
+			date: { startDate: Date, endDate: Date },
+			time: { openTime: Date, closeTime: Date },
 			eventDescription: String,
 			images: []
 		}
@@ -97,7 +96,7 @@ module.exports = companyModel
 // mongoose
 // 	.connect('mongodb://localhost:27017/liveVibeDB', { useNewUrlParser: true })
 // 	.then(
-// 		() => {  
+// 		() => {
 // 			// save to database
 // 			newCompany.save(function(err) {
 // 				if (err) return handleError(err)

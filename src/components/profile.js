@@ -17,7 +17,7 @@ const Profile = props => {
 
 	const [data, setData] = useState({})
 
-	// need to confirm user is logged in 
+	// need to confirm user is logged in
 	useEffect(() => {
 		fetch('http://localhost:3000/api/companyProfile')
 			.then(res => res.json())
@@ -29,8 +29,8 @@ const Profile = props => {
 	} else {
 		return (
 			<View style={styles.container}>
-				<HeaderBar>Profile</HeaderBar>
 				<ScrollView>
+					<HeaderBar theme="dark">Profile</HeaderBar>
 					<View style={styles.headerBackground}></View>
 					<View style={styles.profilePicture}></View>
 					<View style={styles.textWrapper}>
@@ -51,13 +51,14 @@ const Profile = props => {
 						<View>
 							<Text style={styles.sectionHeader}>Email</Text>
 							<Text style={styles.sectionText}>
-							{data.companyProfile.email}
+								{data.companyProfile.email}
 							</Text>
 						</View>
 						<View>
 							<Text style={styles.sectionHeader}>Address</Text>
 							<Text style={styles.sectionText}>
-								{data.companyProfile.address.propertyName} {'\n'}
+								{data.companyProfile.address.propertyName}{' '}
+								{'\n'}
 								{data.companyProfile.address.streetName} {'\n'}
 								{data.companyProfile.address.city} {'\n'}
 								{data.companyProfile.address.country} {'\n'}
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
 	},
 	headerBackground: {
 		backgroundColor: featureStyles.dark,
-		height: 150
+		height: 125
 	},
 	profilePicture: {
 		width: profilePictureSize,

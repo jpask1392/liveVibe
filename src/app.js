@@ -11,17 +11,22 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import React from 'react'
+import { createStore } from 'redux'
+import reducer from './reducers'
+import { Provider } from 'react-redux'
 
 import Login from './components/login'
-import CheckIn from './components/checkIn'
+import CheckIn from './checkIn/checkIn'
 import Profile from './components/profile'
-import Events from './components/events'
+import Events from './events/events'
 import Activity from './components/activity'
 import Settings from './components/settings'
 
+const store = createStore(reducer)
+
 const AuthStack = createStackNavigator({ Login: Login })
 const MainNavigator = createBottomTabNavigator(
-	{	
+	{
 		Profile: { screen: Profile },
 		CheckIn: { screen: CheckIn },
 		Events: { screen: Events },
@@ -55,7 +60,7 @@ const MainNavigator = createBottomTabNavigator(
 			tabBarOptions: {
 				style: {
 					height: 80,
-					backgroundColor: "#1F1F1F"
+					backgroundColor: '#1F1F1F'
 				},
 				labelStyle: {
 					fontSize: 12
@@ -65,7 +70,7 @@ const MainNavigator = createBottomTabNavigator(
 	}
 )
 
-const App = createAppContainer(
+const AppNavigator = createAppContainer(
 	createSwitchNavigator(
 		{
 			App: MainNavigator,
@@ -76,5 +81,14 @@ const App = createAppContainer(
 		}
 	)
 )
+
+const App = () => {
+	console.log(store.getState())
+	return (
+		<Provider store={store}>
+			<AppNavigator />
+		</Provider>
+	)
+}
 
 export default App

@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { headerStyles, featureStyles } from '../commonStyles'
 import HeaderBar from './headerBar'
+import { connect } from 'react-redux'
+import { set_max_capacity } from '../actions'
 
 const tempData = {
 	openTime: { hour: '22', minute: '30' },
@@ -22,6 +24,8 @@ const Profile = props => {
 		fetch('http://localhost:3000/api/companyProfile')
 			.then(res => res.json())
 			.then(data => setData(data))
+			// may need to move this one
+			.then(props.dispatch(set_max_capacity(10)))
 	}, [])
 
 	if (data.companyName === undefined) {
@@ -119,4 +123,4 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default Profile
+export default connect()(Profile)

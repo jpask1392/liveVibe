@@ -18,43 +18,17 @@ const companySchema = new mongoose.Schema({
 		profileImage: String,
 		phoneNumber: Number,
 		openTime: Date,
-		closeTime: Date
+		closeTime: Date,
+		maxCapacity: Number
 	},
-	countData: {
-		latestData: {
-			male: {
-				count: Number,
-				time: Date,
-				date: Date,
-				ageRange: String
-			},
-			female: {
-				count: Number,
-				time: Date,
-				date: Date,
-				ageRange: String
-			}
-		},
-		// array of object data
-		// update every 5 minutes?
-		// not accessible from user app
-		previousData: [
-			{
-				male: {
-					count: Number,
-					time: Date,
-					date: Date,
-					ageRange: String
-				},
-				female: {
-					count: Number,
-					time: Date,
-					date: Date,
-					ageRange: String
-				}
-			}
-		]
-	},
+	countData: [
+		{
+			gender: String,
+			ageRange: String,
+			time: Date,
+			date: Date,
+		}
+	],
 	events: [
 		{
 			eventName: String,
